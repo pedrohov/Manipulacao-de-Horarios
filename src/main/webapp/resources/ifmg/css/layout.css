@@ -12,7 +12,7 @@
 
 .if-topbar > img {
 	margin-top: 1px;
-	margin-left: 5px;
+	margin-left: 15px;
 }
 
 /* SIDEBAR */
@@ -85,7 +85,7 @@
 }
 
 .if-menu > ul {
-	margin: 0;
+	margin: 5px 0 0 0;
 	padding: 0;
 	list-style: none;
 }
@@ -97,7 +97,13 @@
 	text-decoration: none;
 	font-weight: 500;
 	color: #373737;
+	
+	border-bottom: 1px solid #afafaf;
 } 
+
+.if-menu > ul li:last-child a {
+	border-bottom: none;
+}
 
 .if-menu > ul i {
 	margin-right: 6px;
@@ -162,4 +168,9 @@
 	border: 1px solid #ccc;
 	margin-top: 8px;
 	padding: 10px
+}
+
+.ui-dialog {
+	min-width: 350px;
+	font-size: 14px;
 }

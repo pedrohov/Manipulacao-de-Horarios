@@ -13,9 +13,10 @@ public class CursoService {
         dao = new CursoDAO();
     }
     
-    public Curso buscarPorCodigo(Integer id) throws NegocioException {
+    public Curso buscarPorCodigo(Integer id) {
         if(id == null || id <= 0)
-            throw new NegocioException("Informe um código válido.");       
+            return null;
+        	//throw new NegocioException("Informe um código válido.");       
         return dao.buscarPorCodigo(id);
     }
     

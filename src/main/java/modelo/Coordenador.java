@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -8,7 +10,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("COORDENADOR")
-public class Coordenador extends Pessoa {
+public class Coordenador extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

@@ -7,7 +7,7 @@
  
     <ui:define name="conteudo">
     
-    <h1 class="if-page-title">Cadastro de curso</h1>
+    <h1 class="if-page-title">Cadastro de Turma</h1>
 		<h:form  id="frm">
         
         <!-- MENU -->
@@ -15,15 +15,15 @@
              <p:toolbarGroup  align="left">
                <p:commandButton value="Salvar"
                                 icon="ui-icon-check"
-                                action="#{curso.salvar}"
+                                action="#{turma.salvar}"
                                 update="frm"/>
              </p:toolbarGroup>             
           
              <p:toolbarGroup  align="right">
                <p:commandButton value="Novo"
                                 icon="ui-icon-plus"
-                                action="#{curso.novo}"/>
-               <p:button value="Pesquisar" outcome="curso"/>                 
+                                action="#{turma.novo}"/>
+               <p:button value="Pesquisar" outcome="turma"/>                 
              </p:toolbarGroup>             
           </p:toolbar> 
         
@@ -31,19 +31,22 @@
         <p:messages/>
         <div class="ui-fluid">
 	        <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-10">
-				<p:outputLabel value="Nome:" for="txtNome" />
-		        <p:inputText value="#{curso.obj.nome}" id="txtNome" required="true"  >
-					<f:validateLength minimum="3" maximum="50"/>
-		        </p:inputText>
-		        
-		        <p:outputLabel value="Número de Períodos:" for="txtNPeriodos" />
-		        <p:inputText value="#{curso.obj.n_periodos}" id="txtNPeriodos" required="true" />
-		        
-		        <p:outputLabel value="Coordenador:" for="somCoord" />
-		        <p:selectOneMenu id="somCoord" value="#{curso.obj.coordenador}">
-		            <f:selectItems value="#{curso.coordenadores}" />
+				
+				<p:outputLabel value="Disciplina:" for="somDisc" />
+		        <p:selectOneMenu id="somDisc" value="#{turma.obj.disciplina}">
+		            <f:selectItems value="#{turma.disciplinas}" />
+		        </p:selectOneMenu>	
+		        	        
+		        <p:outputLabel value="Professor:" for="somProf" />
+		        <p:selectOneMenu id="somProf" value="#{turma.obj.professor}">
+		            <f:selectItems value="#{turma.professores}" />
 		        </p:selectOneMenu>
-		       
+		        
+		        <p:outputLabel value="Período:" for="somPeriodo" />
+		        <p:selectOneMenu id="somPeriodo" value="#{turma.obj.periodo}">
+		            <f:selectItems value="#{turma.periodos}" />
+		        </p:selectOneMenu> 
+		        
 			</p:panelGrid>
 		</div>
 		

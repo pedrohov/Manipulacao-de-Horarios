@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import modelo.Periodo;
-import modelo.Sala;
 import service.PeriodoService;
 import util.FacesMensagens;
 

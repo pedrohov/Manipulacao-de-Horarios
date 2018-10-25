@@ -1,15 +1,12 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity(name="periodo")
 public class Periodo implements Serializable {
@@ -22,11 +19,9 @@ public class Periodo implements Serializable {
 	private String nome;
 	private Integer semestre;
 	private Integer ano;
-	@OneToMany(mappedBy="periodo", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<Turma> turmas;
 	
 	public Periodo() {
-		turmas = new ArrayList<Turma>();
+
 	}
 	
 	public Periodo(Integer codigo, String nome, Integer semestre, Integer ano, List<Turma> turmas) {
@@ -35,7 +30,7 @@ public class Periodo implements Serializable {
 		this.nome = nome;
 		this.semestre = semestre;
 		this.ano = ano;
-		this.turmas = turmas;
+
 	}
 
 	public Integer getCodigo() {
@@ -70,28 +65,6 @@ public class Periodo implements Serializable {
 		this.ano = ano;
 	}
 
-	public List<Turma> getTurmas() {
-		return turmas;
-	}
-
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}
-	
-	public void addTurma(Turma turma) {
-		if(!this.turmas.contains(turma)) {
-			turma.setPeriodo(this);
-			this.turmas.add(turma);
-		}
-	}
-	
-	public void removeTurma(Turma turma) {
-		if(this.turmas.contains(turma)) {
-			turma.setPeriodo(null);
-			this.turmas.remove(turma);
-		}
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -119,7 +92,7 @@ public class Periodo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Periodo [nome=" + nome + ", semestre=" + semestre + ", ano=" + ano + "]";
+		return nome;
 	}
 	
 }

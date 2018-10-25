@@ -54,11 +54,15 @@
 			     <h:outputText value="#{obj.tipo_sala_requerida}" />
 			</p:column>
           
-			<p:column headerText=" " width="10%">
-			     <p:commandButton icon="ui-icon-trash" title="Excluir" update="frm"
+			<p:column headerText="Opções" width="10%">
+				<p:commandButton icon="ui-icon-trash" title="Excluir" update="frm"
 			                      oncomplete="PF('confirmacao').show(); return false;">
-			         <f:setPropertyActionListener target="#{disciplina.obj}" value="#{obj}" />
-			     </p:commandButton>        
+					<f:setPropertyActionListener target="#{disciplina.obj}" value="#{obj}" />
+			    </p:commandButton>       
+			    <p:commandButton icon="ui-icon-info" title="Listar Cursos" update="frm"
+			                      oncomplete="PF('listCursos').show(); return false;">
+			     	<f:setPropertyActionListener target="#{disciplina.obj}" value="#{obj}" />
+			    </p:commandButton> 
 			</p:column>
              
 			<f:facet name="footer">
@@ -68,13 +72,25 @@
 
 			<p:confirmDialog header="Exclusão de item"
 				message="Tem certeza que deseja excluir esse registro?"
-widgetVar="confirmacao">
+				widgetVar="confirmacao">
 				<p:commandButton value="Sim" action="#{disciplina.excluir}"
 					update="frm" process="@this"
 					oncomplete="PF('confirmacao').hide()" />
 				<p:button value="Não"
 					onclick="PF('confirmacao').hide(); return false;" />
 			</p:confirmDialog>
+			
+			<p:dialog header="Cursos" widgetVar="listCursos" modal="true" closeOnEscape="true">
+				<p:dataList value="#{disciplina.obj.cursos}" var="obj" 
+                            itemType="disc"
+                            rendered="#{not empty disciplina.obj.cursos}">
+                        	#{obj.nome}
+                </p:dataList>
+               
+                <p:outputLabel value="Esta disciplina não está associada a nenhum curso."
+                               rendered="#{empty disciplina.obj.cursos}"
+                />
+			</p:dialog>
 		</h:form>
     </ui:define>
  

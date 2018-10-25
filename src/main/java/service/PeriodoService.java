@@ -13,9 +13,10 @@ public class PeriodoService {
         dao = new PeriodoDAO();
     }
     
-    public Periodo buscarPorCodigo(Integer id) throws NegocioException {
+    public Periodo buscarPorCodigo(Integer id) {
         if(id == null || id <= 0)
-            throw new NegocioException("Informe um código válido.");       
+        	return null;
+            //throw new NegocioException("Informe um código válido.");       
         return dao.buscarPorCodigo(id);
     }
     

@@ -46,7 +46,7 @@
 			     <h:outputText value="#{obj.n_periodos}" />
 			</p:column>
           
-			<p:column headerText=" " width="10%">
+			<p:column headerText="Opções" width="10%">
 			     <p:commandButton icon="ui-icon-trash" title="Excluir" update="frm"
 			                      oncomplete="PF('confirmacao').show(); return false;">
 			         <f:setPropertyActionListener target="#{curso.obj}" value="#{obj}" />

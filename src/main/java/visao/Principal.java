@@ -76,10 +76,10 @@ public class Principal {
 		
 		
 		// TESTE DISCIPLINAS E CURSOS:
-		/*CursoService scur = new CursoService();
-		Curso curso = new Curso();
+		CursoService scur = new CursoService();
+		/*Curso curso = new Curso();
 		curso.setN_periodos(10);
-		curso.setNome("Ciencia da computacao");
+		curso.setNome("Ciencia da computacao");*/
 		
 		DisciplinaService dser = new DisciplinaService();
 		Disciplina dis = new Disciplina();
@@ -89,8 +89,11 @@ public class Principal {
 		dis.setTipo("Presencial");
 		dis.setTipo_sala_requerida("Inferno");
 		
-		curso.addDisciplina(dis);
-		scur.salvar(curso);*/
+		
+		/*scur.salvar(curso);*/
+		Curso curso = scur.buscarPorCodigo(3);
+		dis.addCurso(curso);
+		dser.salvar(dis);
 	}
 
 }

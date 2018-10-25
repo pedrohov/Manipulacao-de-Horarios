@@ -49,6 +49,16 @@
 		        
 		        <p:outputLabel value="Tipo de Sala:" for="txtTSala" />
 		        <p:inputText value="#{disciplina.obj.tipo_sala_requerida}" id="txtTSala" required="true" />
+		        
+		        <p:outputLabel value="Cursos:" for="smmCursos" />
+		        <p:selectManyMenu id="smmCursos" value="#{disciplina.obj.cursos}" converter="cursoConverter"
+                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+                    <f:attribute name="collectionType" value="java.util.ArrayList"/>
+            		<f:selectItems value="#{disciplina.cursos}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
+            		<p:column>
+		                <h:outputText value="#{t.nome}" />
+		            </p:column>
+            	</p:selectManyMenu>
 			</p:panelGrid>
 		</div>
 		

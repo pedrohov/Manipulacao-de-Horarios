@@ -6,10 +6,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -26,8 +27,16 @@ public class Disciplina implements Serializable {
 	private Integer carga_horaria;
 	private String tipo_sala_requerida;
 	private Integer ano;
-	@ManyToMany(mappedBy="disciplinas", fetch=FetchType.LAZY)
+	@ManyToMany(cascade = { 
+	        CascadeType.PERSIST, 
+	        CascadeType.MERGE
+	})
+	@JoinTable(name = "disciplina_curso",
+	        joinColumns = @JoinColumn(name = "codDisciplina"),
+	        inverseJoinColumns = @JoinColumn(name = "codCurso")
+    )
 	private List<Curso> cursos;
+	
 	@OneToMany(mappedBy="disciplina", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Turma> turmas;
 	
@@ -154,14 +163,12 @@ public class Disciplina implements Serializable {
 	
 	public void addCurso(Curso c) {
 		if(!this.cursos.contains(c)) {
-			c.addDisciplina(this);
 			this.cursos.add(c);
 		}
 	}
 	
 	public void removeCurso(Curso c) {
 		if(this.cursos.contains(c)) {
-			c.removeDisciplina(this);
 			this.cursos.remove(c);
 		}
 	}

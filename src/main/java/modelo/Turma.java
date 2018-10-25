@@ -1,17 +1,14 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity(name="turma")
 public class Turma implements Serializable {
@@ -30,11 +27,9 @@ public class Turma implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="codPeriodo")
 	private Periodo periodo;
-	@OneToMany(mappedBy="turma", cascade = CascadeType.ALL, orphanRemoval=true)
-	private List<Horario> horarios;
 	
 	public Turma() {
-		horarios = new ArrayList<Horario>();
+		
 	}
 
 	public Turma(Integer codigo, Disciplina disciplina, Professor professor, Periodo periodo,
@@ -44,7 +39,7 @@ public class Turma implements Serializable {
 		this.disciplina = disciplina;
 		this.professor = professor;
 		this.periodo = periodo;
-		this.horarios = horarios;
+		
 	}
 
 	public Integer getCodigo() {
@@ -77,28 +72,6 @@ public class Turma implements Serializable {
 
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
-	}
-
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(List<Horario> horarios) {
-		this.horarios = horarios;
-	}
-	
-	public void addHorario(Horario h) {
-		if(!this.horarios.contains(h)) {
-			h.setTurma(this);
-			this.horarios.add(h);
-		}
-	}
-	
-	public void removeHorario(Horario h) {
-		if(this.horarios.contains(h)) {
-			h.setTurma(null);
-			this.horarios.remove(h);
-		}
 	}
 
 	@Override

@@ -31,24 +31,27 @@
 	<aside class="if-sidebar  js-sidebar">
 		<nav class="if-menu">
 			<ul>
+				<li><h:link outcome="/horario">
+						<i class="fa  fa-fw  fa-calendar"></i>Horários</h:link></li>
+				<li><h:link outcome="/turma">
+						<i class="fa  fa-fw  fa-users"></i>Turmas</h:link></li>
 				 <li><h:link outcome="/sala">
 						<i class="fa  fa-fw  fa-home"></i>Salas</h:link></li>
-				<li><h:link outcome="/periodo">
-						<i class="fa  fa-fw  fa-sort-numeric-asc"></i>Períodos</h:link></li>
 				<li><h:link outcome="/disciplina">
 						<i class="fa  fa-fw  fa-book"></i>Disciplinas</h:link></li>
 				<li><h:link outcome="/curso">
 						<i class="fa  fa-fw  fa-briefcase"></i>Cursos</h:link></li>
-				<!--<li><h:link outcome="/fabricante">
-						<i class="fa  fa-fw  fa-user"></i>Fabricantes</h:link></li>
-				<li><h:link outcome="/modelo">
-						<i class="fa  fa-fw  fa-file-text"></i>Modelos</h:link></li>
-				<li><h:link outcome="/acessorio">
-						<i class="fa  fa-fw  fa-cog"></i>Acessórios</h:link></li>
-				<li><h:link outcome="/carro">
-						<i class="fa  fa-fw  fa-car"></i>Carros</h:link></li>
-				<li><h:link outcome="/pessoa">
-						<i class="fa  fa-fw  fa-user"></i>Usuários</h:link></li>-->
+				<li><h:link outcome="/periodo">
+						<i class="fa  fa-fw  fa-sort-numeric-asc"></i>Períodos</h:link></li>
+				<li><h:link outcome="/usuario">
+						<i class="fa  fa-fw  fa-user"></i>Usuários</h:link></li>
+			</ul>
+			<p:separator />
+			<ul>
+				<li><h:link outcome="/solicitar_disciplina">
+						<i class="fa  fa-fw  fa-flag"></i>Solicitar Disciplinas</h:link></li>
+				<li><h:link outcome="/gerenciar_solicitacoes">
+						<i class="fa  fa-fw  fa-bell"></i>Gerenciar Solicitações</h:link></li>
 
 			</ul>
 		</nav>

@@ -1,15 +1,12 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Sala implements Serializable {
@@ -22,11 +19,9 @@ public class Sala implements Serializable {
 	private String nome;
 	private String tipo;
 	private Integer capacidade;
-	@OneToMany(mappedBy="sala", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<Horario> horarios;
 	
 	public Sala() {
-		horarios = new ArrayList<Horario>();
+		
 	}
 
 	public Sala(Integer codigo, String nome, String tipo, Integer capacidade, List<Horario> horarios) {
@@ -35,7 +30,6 @@ public class Sala implements Serializable {
 		this.nome = nome;
 		this.tipo = tipo;
 		this.capacidade = capacidade;
-		this.horarios = horarios;
 	}
 
 	public Integer getCodigo() {
@@ -68,27 +62,6 @@ public class Sala implements Serializable {
 
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
-	}
-
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(List<Horario> horarios) {
-		this.horarios = horarios;
-	}
-	
-	public void addHorario(Horario h) {
-		if(!this.horarios.contains(h)) {
-			h.setSala(this);
-			this.horarios.add(h);
-		}
-	}
-	
-	public void removeHorario(Horario h) {
-		h.setSala(null);
-		if(this.horarios.contains(h))
-			this.horarios.remove(h);
 	}
 
 	@Override
