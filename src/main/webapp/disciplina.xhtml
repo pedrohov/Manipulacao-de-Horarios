@@ -7,7 +7,7 @@
  
     <ui:define name="conteudo">
     
-	<h1 class="if-page-title">Pesquisa de disciplinas</h1>
+	<h1 class="if-page-title">Disciplinas</h1>
 		<h:form  id="frm">
 		<!-- MENU -->
 		<p:toolbar>
@@ -44,6 +44,10 @@
 			
 			<p:column headerText="Carga Horária">
 			     <h:outputText value="#{obj.carga_horaria}" />
+			</p:column>
+			
+			<p:column headerText="Ano">
+			     <h:outputText value="#{obj.ano}" />
 			</p:column>
 			
 			<p:column headerText="Tipo Sala">

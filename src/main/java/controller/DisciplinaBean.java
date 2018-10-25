@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import modelo.Disciplina;
-import modelo.Sala;
 import service.DisciplinaService;
 import util.FacesMensagens;
 
@@ -31,7 +30,7 @@ public class DisciplinaBean implements Serializable {
 			setDisciplinas(service.buscarTodos()); 
 			
 			FacesMensagens.info("Registro salvo com sucesso.");
-			limpa();
+			limpar();
 		}
 		catch (Exception e) {
 			FacesMensagens.error(e.getMessage());
@@ -55,11 +54,11 @@ public class DisciplinaBean implements Serializable {
 	}
 	
 	public String novo() {
-		limpa();
-		return  "cadastro_disciplina?faces-redirect=true";
+		limpar();
+		return "cadastro_disciplina?faces-redirect=true";
 	}
 	
-	private void limpa() {
+	private void limpar() {
 		obj = new Disciplina();
 	}
 

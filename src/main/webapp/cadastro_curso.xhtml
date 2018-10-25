@@ -7,7 +7,7 @@
  
     <ui:define name="conteudo">
     
-    <h1 class="if-page-title">Cadastro de disciplina</h1>
+    <h1 class="if-page-title">Cadastro de curso</h1>
 		<h:form  id="frm">
         
         <!-- MENU -->
@@ -15,15 +15,15 @@
              <p:toolbarGroup  align="left">
                <p:commandButton value="Salvar"
                                 icon="ui-icon-check"
-                                action="#{disciplina.salvar}"
+                                action="#{curso.salvar}"
                                 update="frm"/>
              </p:toolbarGroup>             
           
              <p:toolbarGroup  align="right">
                <p:commandButton value="Novo"
                                 icon="ui-icon-plus"
-                                action="#{disciplina.novo}"/>
-               <p:button value="Pesquisar" outcome="disciplina"/>                 
+                                action="#{curso.novo}"/>
+               <p:button value="Pesquisar" outcome="curso"/>                 
              </p:toolbarGroup>             
           </p:toolbar> 
         
@@ -32,23 +32,18 @@
         <div class="ui-fluid">
 	        <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-10">
 				<p:outputLabel value="Nome:" for="txtNome" />
-		        <p:inputText value="#{disciplina.obj.nome}" id="txtNome" required="true"  >
+		        <p:inputText value="#{curso.obj.nome}" id="txtNome" required="true"  >
 					<f:validateLength minimum="3" maximum="50"/>
 		        </p:inputText>
 		        
-		        <p:outputLabel value="Tipo:" for="txtTipo" />
-		        <p:inputText value="#{disciplina.obj.tipo}" id="txtTipo" required="true"  >
-					<f:validateLength minimum="3" maximum="50"/>
-		        </p:inputText>
+		        <p:outputLabel value="Número de Períodos:" for="txtNPeriodos" />
+		        <p:inputText value="#{curso.obj.n_periodos}" id="txtNPeriodos" required="true" />
 		        
-		        <p:outputLabel value="Carga Horária:" for="txtCarga" />
-		        <p:inputText value="#{disciplina.obj.carga_horaria}" id="txtCarga" required="true" />
+		        <p:outputLabel value="Coordenador:" for="somCoord" />
+		        <p:selectOneMenu id="somCoord" value="#{curso.obj.coordenador}">
+		            <f:selectItems value="#{curso.coordenadores}" />
+		        </p:selectOneMenu>
 		        
-		        <p:outputLabel value="Ano:" for="txtAno" />
-		        <p:inputText value="#{disciplina.obj.ano}" id="txtAno" required="true" />
-		        
-		        <p:outputLabel value="Tipo de Sala:" for="txtTSala" />
-		        <p:inputText value="#{disciplina.obj.tipo_sala_requerida}" id="txtTSala" required="true" />
 			</p:panelGrid>
 		</div>
 		
