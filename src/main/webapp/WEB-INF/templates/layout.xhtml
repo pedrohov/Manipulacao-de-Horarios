@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>IFMG-Campus Formiga</title>
+	
+	<h:outputStylesheet library="ifmg" name="css/layout.css" />
+	
+	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />
+    <h:outputScript target="body" library="ifmg" name="js/app.js" />
+</h:head>
+
+<h:body>
+
+	<header class="if-topbar">
+		<h:graphicImage library="ifmg" name="images/logo-ifmg.png" 
+		    width="100" height="50"/>
+		    
+		<a href="#" class="if-toggle  js-toggle"><i class="fa  fa-bars"></i></a>    
+	</header>
+	
+	<aside class="if-sidebar  js-sidebar">
+		<nav class="if-menu">
+			<ul>
+				 <li><h:link outcome="/sala">
+						<i class="fa  fa-fw  fa-home"></i>Salas</h:link></li>
+				<li><h:link outcome="/periodo">
+						<i class="fa  fa-fw  fa-sort-numeric-asc"></i>Períodos</h:link></li>
+				<li><h:link outcome="/disciplina">
+						<i class="fa  fa-fw  fa-book"></i>Disciplinas</h:link></li>
+				<!--<li><h:link outcome="/fabricante">
+						<i class="fa  fa-fw  fa-user"></i>Fabricantes</h:link></li>
+				<li><h:link outcome="/modelo">
+						<i class="fa  fa-fw  fa-file-text"></i>Modelos</h:link></li>
+				<li><h:link outcome="/acessorio">
+						<i class="fa  fa-fw  fa-cog"></i>Acessórios</h:link></li>
+				<li><h:link outcome="/carro">
+						<i class="fa  fa-fw  fa-car"></i>Carros</h:link></li>
+				<li><h:link outcome="/pessoa">
+						<i class="fa  fa-fw  fa-user"></i>Usuários</h:link></li>-->
+
+			</ul>
+		</nav>
+	</aside>
+    
+    <section class="if-content  js-content">
+		<ui:insert name="conteudo" />
+    </section>
+    
+</h:body>
+</html>
