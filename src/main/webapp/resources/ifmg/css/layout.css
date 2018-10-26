@@ -176,14 +176,14 @@
 }
 
 /* Solicitacoes */
-.solicitacao-aceita {
+.solicitacao-ACEITA {
 	color: #15db18;
 }
 
-.solicitacao-pendente {
+.solicitacao-SOLICITADA {
 	color: #db9915;
 }
 
-.solicitacao-recusada {
+.solicitacao-RECUSADA {
 	color: #db1515;
 }

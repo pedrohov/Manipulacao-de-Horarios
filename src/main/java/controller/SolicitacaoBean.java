@@ -104,12 +104,14 @@ public class SolicitacaoBean implements Serializable {
 		if(obj == null)
 			return "";
 		
-		if(obj.getStatus() == SolicitacaoStatus.SOLICITADA)
+		System.out.println(obj.getStatus());
+		
+		if(obj.getStatus() == SolicitacaoStatus.RECUSADA)
+			return "solicitacao-recusada";
+		else if(obj.getStatus() == SolicitacaoStatus.SOLICITADA)
 			return "solicitacao-pendente";
 		else if(obj.getStatus() == SolicitacaoStatus.ACEITA)
 			return "solicitacao-aceita";
-		else if(obj.getStatus() == SolicitacaoStatus.RECUSADA)
-			return "solicitacao-recusada";
 		
 		return "";
 	}

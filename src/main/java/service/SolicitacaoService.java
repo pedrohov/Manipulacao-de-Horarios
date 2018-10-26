@@ -18,20 +18,24 @@ public class SolicitacaoService {
         return dao.buscarPorCodigo(id);
     }
     
-    public List<Solicitacao> buscarPorNome(String nome){ 
+    public List<Solicitacao> buscarPorNome(String nome) { 
         return dao.buscarPorNome(nome);
     }
     
-    public void salvar(Solicitacao entidade){
+    public void salvar(Solicitacao entidade) {
         dao.salvar(entidade);
     }
     
-    public boolean remover(Integer id){
+    public boolean remover(Integer id) {
         return dao.remover(id);
     }
     
-    public List<Solicitacao> buscarTodos(){
+    public List<Solicitacao> buscarTodos() {
         return dao.buscarTodos();
+    }
+    
+    public List<Solicitacao> buscarPendentes() {
+    	return dao.buscarPendentes();
     }
  
 }

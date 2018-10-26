@@ -35,7 +35,7 @@
 			</p:column>
 			
 			<p:column headerText="Status">
-			     <h:outputText styleClass="#{solib.corSolicitacao()}" value="#{obj.status}" />
+			     <h:outputText styleClass="solicitacao-#{obj.status}" value="#{obj.status}" />
 			</p:column>
 			
 			<p:column headerText="Data de Solicitação">
@@ -43,27 +43,14 @@
 			</p:column>
 			          
 			<p:column headerText="Opções" width="10%">
-			     <!-- <p:commandButton icon="ui-icon-trash" title="Excluir" update="frm"
-			                      oncomplete="PF('confirmacao').show(); return false;">
-			         <f:setPropertyActionListener target="#{solib.obj}" value="#{obj}" />
-			     </p:commandButton>-->
 			     <p:commandButton icon="ui-icon-close" title="Recusar Solicitação" value="Recusar" update="frm"
-			                      oncomplete="PF('recusar').show(); return false;">
+			                      oncomplete="PF('recusar').show(); return false;"
+			                      rendered="#{obj.status == 'SOLICITADA'}">
 					<f:setPropertyActionListener target="#{solib.obj}" value="#{obj}" />
 				</p:commandButton>
 			</p:column>
             
 		</p:dataTable>
-
-			<!-- <p:confirmDialog header="Exclusão de item"
-				message="Tem certeza que deseja excluir esse registro?"
-				widgetVar="confirmacao">
-				<p:commandButton value="Sim" action="#{solib.excluir}"
-					update="frm" process="@this"
-					oncomplete="PF('confirmacao').hide()" />
-				<p:button value="Não"
-					onclick="PF('confirmacao').hide(); return false;" />
-			</p:confirmDialog>-->
 			
 			<p:confirmDialog header="Recusar Solicitação"
 				message="Tem certeza que deseja recusar essa solicitação?"

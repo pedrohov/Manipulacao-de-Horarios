@@ -31,6 +31,12 @@
         <p:messages/>
         <div class="ui-fluid">
 	        <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-10">
+	        	<p:outputLabel value="Referente à solicitação:" for="somSolicit" />
+		        <p:selectOneMenu id="somSolicit" value="#{disciplina.solicitacao}">
+		        	<f:selectItem  itemLabel="Solicitações Pendentes" itemValue="#{null}" />
+		            <f:selectItems value="#{disciplina.solicitacoes}" />
+		        </p:selectOneMenu>
+	        
 				<p:outputLabel value="Nome:" for="txtNome" />
 		        <p:inputText value="#{disciplina.obj.nome}" id="txtNome" required="true"  >
 					<f:validateLength minimum="3" maximum="50"/>
@@ -48,7 +54,7 @@
 		        <p:inputText value="#{disciplina.obj.ano}" id="txtAno" required="true" />
 		        
 		        <p:outputLabel value="Tipo de Sala:" for="txtTSala" />
-		        <p:inputText value="#{disciplina.obj.tipo_sala_requerida}" id="txtTSala" required="true" />
+		        <p:inputText value="#{disciplina.obj.tipo_sala_requerida}" id="txtTSala" />
 		        
 		        <p:outputLabel value="Cursos:" for="smmCursos" />
 		        <p:selectManyMenu id="smmCursos" value="#{disciplina.obj.cursos}" converter="cursoConverter"
