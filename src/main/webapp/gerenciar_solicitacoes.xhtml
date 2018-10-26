@@ -9,7 +9,72 @@
     
 	<h1 class="if-page-title">Gerenciar Solicitações</h1>
 		<h:form  id="frm">
-		
+		<!-- TABELA -->
+		<p:dataTable value="#{solib.solicitacoes}"
+                     var="obj" 
+                     selectionMode="single"
+                     selection="#{solib.obj}"
+                     rowKey="#{obj.codigo}"
+                     reflow="true"
+                     style="margin-top: 20px"
+                     paginator="true"
+                     sortBy="#{obj.codigo}"
+                     id="tbSolicitacao"
+                     emptyMessage="Não existe registros cadastrados">
+                       
+			<p:column headerText="Código"  width="10%">
+			     <h:outputText value="#{obj.codigo}" />
+			</p:column>
+			 
+			<p:column headerText="Nome">
+			     <h:outputText value="#{obj.nome}" />
+			</p:column>
+			
+			<p:column headerText="Descrição">
+			     <h:outputText value="#{obj.descricao}" />
+			</p:column>
+			
+			<p:column headerText="Status">
+			     <h:outputText styleClass="#{solib.corSolicitacao()}" value="#{obj.status}" />
+			</p:column>
+			
+			<p:column headerText="Data de Solicitação">
+			     <h:outputText value="#{obj.data}" />
+			</p:column>
+			          
+			<p:column headerText="Opções" width="10%">
+			     <!-- <p:commandButton icon="ui-icon-trash" title="Excluir" update="frm"
+			                      oncomplete="PF('confirmacao').show(); return false;">
+			         <f:setPropertyActionListener target="#{solib.obj}" value="#{obj}" />
+			     </p:commandButton>-->
+			     <p:commandButton icon="ui-icon-close" title="Recusar Solicitação" value="Recusar" update="frm"
+			                      oncomplete="PF('recusar').show(); return false;">
+					<f:setPropertyActionListener target="#{solib.obj}" value="#{obj}" />
+				</p:commandButton>
+			</p:column>
+            
+		</p:dataTable>
+
+			<!-- <p:confirmDialog header="Exclusão de item"
+				message="Tem certeza que deseja excluir esse registro?"
+				widgetVar="confirmacao">
+				<p:commandButton value="Sim" action="#{solib.excluir}"
+					update="frm" process="@this"
+					oncomplete="PF('confirmacao').hide()" />
+				<p:button value="Não"
+					onclick="PF('confirmacao').hide(); return false;" />
+			</p:confirmDialog>-->
+			
+			<p:confirmDialog header="Recusar Solicitação"
+				message="Tem certeza que deseja recusar essa solicitação?"
+				widgetVar="recusar">
+				<p:commandButton value="Sim" action="#{solib.recusar}"
+					update="frm" process="@this"
+					oncomplete="PF('recusar').hide()" />
+				<p:button value="Não"
+					onclick="PF('recusar').hide(); return false;" />
+			</p:confirmDialog>
+			
 		</h:form>
     </ui:define>
  

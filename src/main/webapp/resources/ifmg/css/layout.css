@@ -174,3 +174,16 @@
 	min-width: 350px;
 	font-size: 14px;
 }
+
+/* Solicitacoes */
+.solicitacao-aceita {
+	color: #15db18;
+}
+
+.solicitacao-pendente {
+	color: #db9915;
+}
+
+.solicitacao-recusada {
+	color: #db1515;
+}

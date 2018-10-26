@@ -9,6 +9,7 @@ import modelo.Horario;
 import modelo.Professor;
 import modelo.Sala;
 import modelo.Sexo;
+import modelo.Solicitacao;
 import service.CoordenadorService;
 import service.CursoService;
 import service.DisciplinaService;
@@ -76,10 +77,10 @@ public class Principal {
 		
 		
 		// TESTE DISCIPLINAS E CURSOS:
-		CursoService scur = new CursoService();
-		/*Curso curso = new Curso();
+		/*CursoService scur = new CursoService();
+		Curso curso = new Curso();
 		curso.setN_periodos(10);
-		curso.setNome("Ciencia da computacao");*/
+		curso.setNome("Ciencia da computacao");
 		
 		DisciplinaService dser = new DisciplinaService();
 		Disciplina dis = new Disciplina();
@@ -90,10 +91,18 @@ public class Principal {
 		dis.setTipo_sala_requerida("Inferno");
 		
 		
-		/*scur.salvar(curso);*/
+
 		Curso curso = scur.buscarPorCodigo(3);
 		dis.addCurso(curso);
-		dser.salvar(dis);
+		dser.salvar(dis);*/
+		
+		Solicitacao s = new Solicitacao();
+		if(s == null)
+			System.out.println("NULLLLL");
+		else {
+			s.setNome("HMm");
+			System.out.println(s.getNome());
+		}
 	}
 
 }

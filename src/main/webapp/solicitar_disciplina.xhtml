@@ -10,9 +10,89 @@
 	<h1 class="if-page-title">Solicitar Disciplina</h1>
 		<h:form  id="frm">
 		
+		
+		<p:commandButton icon="ui-icon-plus" value="Nova Solicitação" title="Nova Solicitação" update="frm"
+			oncomplete="PF('novaSolicitacao').show(); return false;"/>
+		
+		
+		<!-- TABELA -->
+		<p:dataTable value="#{solib.solicitacoes}"
+                     var="obj" 
+                     selectionMode="single"
+                     selection="#{solib.obj}"
+                     rowKey="#{obj.codigo}"
+                     reflow="true"
+                     style="margin-top: 20px"
+                     paginator="true"
+                     sortBy="#{obj.codigo}"
+                     id="tbSolicitacao"
+                     emptyMessage="Não existe registros cadastrados">
+                       
+			<p:column headerText="Código"  width="10%">
+			     <h:outputText value="#{obj.codigo}" />
+			</p:column>
+			 
+			<p:column headerText="Nome">
+			     <h:outputText value="#{obj.nome}" />
+			</p:column>
+			
+			<p:column headerText="Descrição">
+			     <h:outputText value="#{obj.descricao}" />
+			</p:column>
+			
+			<p:column headerText="Status">
+			     <h:outputText styleClass="#{solib.corSolicitacao()}" value="#{obj.status}" />
+			</p:column>
+			
+			<p:column headerText="Data de Solicitação">
+			     <h:outputText value="#{obj.data}" />
+			</p:column>
+			          
+			<p:column headerText="Opções" width="10%">
+			     <p:commandButton icon="ui-icon-trash" title="Excluir" update="frm"
+			                      oncomplete="PF('confirmacao').show(); return false;">
+			         <f:setPropertyActionListener target="#{solib.obj}" value="#{obj}" />
+			     </p:commandButton>
+			</p:column>
+             
+			<f:facet name="footer">
+                <p:commandButton icon="ui-icon-pencil" value="Editar" action="#{solib.editar}" />
+            </f:facet>
+		</p:dataTable>
+
+			<p:confirmDialog header="Exclusão de item"
+				message="Tem certeza que deseja excluir esse registro?"
+				widgetVar="confirmacao">
+				<p:commandButton value="Sim" action="#{solib.excluir}"
+					update="frm" process="@this"
+					oncomplete="PF('confirmacao').hide()" />
+				<p:button value="Não"
+					onclick="PF('confirmacao').hide(); return false;" />
+			</p:confirmDialog>
+			
+			
+			<p:dialog header="Nova Solicitação" widgetVar="novaSolicitacao" modal="true" dynamic="true" appendToBody="true">
+				<p:messages/>
+				<div class="ui-fluid">
+				<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-10">
+					<p:outputLabel value="Nome:" for="txtNome" />
+			        <p:inputText value="#{solib.novo.nome}" id="txtNome" required="true"  >
+						<f:validateLength minimum="3" maximum="50"/>
+					</p:inputText>
+					
+					<p:outputLabel value="Descrição:" for="tarDesc" />
+			        <p:inputTextarea rows="3" cols="30" value="#{solib.novo.descricao}" id="tarDesc" required="true" />
+			        
+			        <h:outputText value=" "/>
+			        <p:commandButton value="Enviar Solicitação"
+		                             action="#{solib.salvar}"
+		                             update="frm" process="@form"
+									 oncomplete="PF('novaSolicitacao').hide()"/>
+				</p:panelGrid>
+				</div>
+			</p:dialog>
 		</h:form>
-    </ui:define>
- 
-   
-   
-   </ui:composition>
+		
+		
+	</ui:define>  
+</ui:composition>

@@ -27,6 +27,7 @@ public class Disciplina implements Serializable {
 	private Integer carga_horaria;
 	private String tipo_sala_requerida;
 	private Integer ano;
+	
 	@ManyToMany(cascade = { 
 	        CascadeType.PERSIST, 
 	        CascadeType.MERGE
