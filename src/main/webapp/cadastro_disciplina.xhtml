@@ -9,6 +9,11 @@
     
     <h1 class="if-page-title">Cadastro de disciplina</h1>
 		<h:form  id="frm">
+		
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{disciplina.preRender}" type="preRenderView" />
+		</f:metadata>
         
         <!-- MENU -->
         <p:toolbar>

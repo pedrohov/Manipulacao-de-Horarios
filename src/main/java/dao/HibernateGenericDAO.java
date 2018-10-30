@@ -6,8 +6,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class HibernateGenericDAO<T, ID extends Serializable>
-         implements GenericDAO<T, ID>{
+public class HibernateGenericDAO<T, ID extends Serializable> implements GenericDAO<T, ID>{
 
     private EntityManager em;
     private Class<T> classeEntidade;

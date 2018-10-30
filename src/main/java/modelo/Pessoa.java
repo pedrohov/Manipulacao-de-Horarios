@@ -2,10 +2,13 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,8 +17,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -32,12 +38,21 @@ public class Pessoa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@Temporal(TemporalType.DATE)
+	@Column(name="data_nasc", nullable=true)
 	private Date data_nascimento;
 	private String endereco;
 	private String siape;
+	private String email;
 	@Column(unique=true, length=30)
 	private String login;
 	private String senha;
+	
+	@ElementCollection
+	@JoinTable(name="pessoa_permissao",
+			   uniqueConstraints = { @UniqueConstraint(columnNames={"codPessoa","permissao"}) },
+			   joinColumns = @JoinColumn(name="codPessoa"))
+	@Column(name="permissao", length=50)
+	private Set<String> permissao = new HashSet<String>();
 	
 	public Pessoa() {
 		
@@ -127,6 +142,22 @@ public class Pessoa implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<String> getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Set<String> permissao) {
+		this.permissao = permissao;
 	}
 
 	@Override

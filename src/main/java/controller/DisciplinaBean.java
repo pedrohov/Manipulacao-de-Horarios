@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import modelo.Curso;
 import modelo.Disciplina;
@@ -82,6 +83,12 @@ public class DisciplinaBean implements Serializable {
 	
 	private void limpar() {
 		obj = new Disciplina();
+	}
+	
+	public void preRender(ComponentSystemEvent e) {
+		setDisciplinas(service.buscarTodos());
+		setCursos(cService.buscarTodos());
+		setSolicitacoes(solService.buscarPendentes());
 	}
 
 	public Disciplina getObj() {

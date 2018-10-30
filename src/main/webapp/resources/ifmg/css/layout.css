@@ -90,6 +90,10 @@
 	list-style: none;
 }
 
+.if-menu > ul:last-child {
+	margin: 0;
+}
+
 .if-menu > ul a {
 	display: block;
 	padding: 10px 15px;
@@ -98,7 +102,7 @@
 	font-weight: 500;
 	color: #373737;
 	
-	border-bottom: 1px solid #afafaf;
+	border-bottom: 1px solid #eaeaea;
 } 
 
 .if-menu > ul li:last-child a {
@@ -173,6 +177,10 @@
 .ui-dialog {
 	min-width: 350px;
 	font-size: 14px;
+}
+
+.ui-separator {
+	margin: 0;
 }
 
 /* Solicitacoes */
