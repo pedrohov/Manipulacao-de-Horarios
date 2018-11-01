@@ -78,14 +78,23 @@
 			</p:confirmDialog>
 			
 			<p:dialog header="Exibir Detalhes" widgetVar="detalhes" modal="true" closeOnEscape="true">
-				<p:dataList value="#{usuario.obj}" var="obj" 
-                            itemType="disc">
-                        	#{obj.nome}
-                </p:dataList>
-               
-                <p:outputLabel value="Esta disciplina não está associada a nenhum curso."
-                               rendered="#{empty disciplina.obj.cursos}"
-                />
+                 <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-10">
+                 	<p:outputLabel value="Nome:" for="txtNome" />
+                 	<h:outputText value="#{usuario.obj.nome}" id="txtNome" />
+                 	<p:outputLabel value="CPF:" for="txtCPF" />
+                 	<h:outputText value="#{usuario.obj.cpf}" id="txtCPF" />
+                 	<p:outputLabel value="Endereço:" for="txtEndereco" />
+                 	<h:outputText value="#{usuario.obj.endereco}" id="txtEndereco" />
+                 	<p:outputLabel value="Data de Nascimento:" for="txtData" />
+                 	<h:outputText value="#{usuario.obj.data_nascimento}" id="txtData" />
+                 	<p:outputLabel value="Email" for="txtEmail" />
+                 	<h:outputText value="#{usuario.obj.email}" id="txtEmail" />
+                 	<p:outputLabel value="SIAPE:" for="txtSiape" />
+                 	<h:outputText value="#{usuario.obj.siape}" id="txtSiape" />
+                 	<p:outputLabel value="Login:" for="txtLogin" />
+                 	<h:outputText value="#{usuario.obj.login}" id="txtLogin" />
+             	
+             	</p:panelGrid>
 			</p:dialog>
 		</h:form>
     </ui:define>
