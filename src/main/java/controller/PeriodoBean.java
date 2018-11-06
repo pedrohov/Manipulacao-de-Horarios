@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import modelo.Periodo;
 import service.PeriodoService;
@@ -60,6 +61,10 @@ public class PeriodoBean implements Serializable {
 	
 	private void limpa() {
 		obj = new Periodo();
+	}
+	
+	public void preRender(ComponentSystemEvent e) {
+		setPeriodos(service.buscarTodos());
 	}
 
 	public Periodo getObj() {

@@ -10,6 +10,11 @@
 	<h1 class="if-page-title">Solicitar Disciplina</h1>
 		<h:form  id="frm">
 		
+		<!-- Atualizar bean -->
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{solib.preRender}" type="preRenderView" />
+		</f:metadata>
 		
 		<p:commandButton icon="ui-icon-plus" value="Nova Solicitação" title="Nova Solicitação" update="frm"
 			oncomplete="PF('novaSolicitacao').show(); return false;"/>

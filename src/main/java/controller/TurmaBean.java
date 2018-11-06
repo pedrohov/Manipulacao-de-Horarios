@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import modelo.Disciplina;
 import modelo.Horario;
@@ -82,6 +83,14 @@ public class TurmaBean implements Serializable {
 	
 	private void limpar() {
 		obj = new Turma();
+	}
+	
+	public void preRender(ComponentSystemEvent e) {
+		setTurmas(service.buscarTodos());
+		setProfessores(professorService.buscarTodos());
+		setPeriodos(periodoService.buscarTodos());
+		setDisciplinas(disciplinaService.buscarTodos());
+		setHorarios(horarioService.buscarTodos());
 	}
 
 	public Turma getObj() {

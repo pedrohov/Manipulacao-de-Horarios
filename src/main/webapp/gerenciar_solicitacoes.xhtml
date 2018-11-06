@@ -9,6 +9,13 @@
     
 	<h1 class="if-page-title">Gerenciar Solicitações</h1>
 		<h:form  id="frm">
+		
+		<!-- Atualizar bean -->
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{solib.preRender}" type="preRenderView" />
+		</f:metadata>
+		
 		<!-- TABELA -->
 		<p:dataTable value="#{solib.solicitacoes}"
                      var="obj" 

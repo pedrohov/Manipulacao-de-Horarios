@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import util.FacesMensagens;
 import modelo.Sala;
@@ -60,6 +61,10 @@ public class SalaBean implements Serializable {
 	
 	private void limpa() {
 		obj = new Sala();
+	}
+	
+	public void preRender(ComponentSystemEvent e) {
+		setSalas(service.buscarTodos());
 	}
 
 	public Sala getObj() {

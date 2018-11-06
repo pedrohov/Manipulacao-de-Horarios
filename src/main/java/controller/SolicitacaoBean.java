@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import modelo.Solicitacao;
 import modelo.SolicitacaoStatus;
@@ -66,6 +67,10 @@ public class SolicitacaoBean implements Serializable {
 	private void limpar() {
 		obj  = new Solicitacao();
 		novo = new Solicitacao();
+	}
+	
+	public void preRender(ComponentSystemEvent e) {
+		setSolicitacoes(service.buscarTodos());
 	}
 
 	public Solicitacao getObj() {

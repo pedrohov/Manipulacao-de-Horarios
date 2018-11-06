@@ -9,7 +9,14 @@
     
 	<h1 class="if-page-title">Usuários</h1>
 		<h:form  id="frm">
-			<!-- MENU -->
+		
+		<!-- Atualizar bean -->
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{usuario.preRender}" type="preRenderView" />
+		</f:metadata>
+		
+		<!-- MENU -->
 		<p:toolbar>
 			<p:toolbarGroup  align="left">
 				<p:commandButton value="Novo" icon="ui-icon-plus" action="#{usuario.novo}"/>

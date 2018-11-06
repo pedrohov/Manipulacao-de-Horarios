@@ -43,7 +43,7 @@ public class Pessoa implements Serializable {
 	private String endereco;
 	private String siape;
 	private String email;
-	@Column(unique=true, length=30)
+	@Column(length=30)
 	private String login;
 	private String senha;
 	

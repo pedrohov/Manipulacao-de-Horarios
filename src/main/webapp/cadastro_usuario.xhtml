@@ -9,6 +9,12 @@
     
     <h1 class="if-page-title">Cadastro de Usuário</h1>
 		<h:form  id="frm">
+		
+		<!-- Atualizar bean -->
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{usuario.preRender}" type="preRenderView" />
+		</f:metadata>
         
         <!-- MENU -->
         <p:toolbar>

@@ -7,7 +7,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 
+import modelo.Coordenador;
+import modelo.DirecaoEnsino;
 import modelo.Pessoa;
+import modelo.Professor;
 import modelo.Sexo;
 import service.PessoaService;
 import util.FacesMensagens;
@@ -26,14 +29,56 @@ public class UsuarioBean implements Serializable {
 	public UsuarioBean() {
 		setUsuarios(service.buscarTodos());
 		obj.setSexo(Sexo.MASCULINO);
-		permissao = "DE";
+		
+		if(obj instanceof Coordenador)
+			permissao = "COORD";
+		else if(obj instanceof Professor)
+			permissao = "PROF";
+		else
+			permissao = "DE";
 	}
 	
 	public void salvar() {
-		try{			
-			service.salvar(obj);
+		try{	
+			if(permissao.equals("DE")) {
+				DirecaoEnsino novo = new DirecaoEnsino();
+				novo.setNome(obj.getNome());
+				novo.setCpf(obj.getCpf());
+				novo.setData_nascimento(obj.getData_nascimento());
+				novo.setEmail(obj.getEmail());
+				novo.setEndereco(obj.getEndereco());
+				novo.setLogin(obj.getLogin());
+				novo.setSenha(obj.getSenha());
+				novo.setSexo(obj.getSexo());
+				novo.setSiape(obj.getSiape());
+				service.salvar(novo);
+				
+			} else if(permissao.equals("COORD")) {
+				Coordenador novo = new Coordenador();
+				novo.setNome(obj.getNome());
+				novo.setCpf(obj.getCpf());
+				novo.setData_nascimento(obj.getData_nascimento());
+				novo.setEmail(obj.getEmail());
+				novo.setEndereco(obj.getEndereco());
+				novo.setLogin(obj.getLogin());
+				novo.setSenha(obj.getSenha());
+				novo.setSexo(obj.getSexo());
+				novo.setSiape(obj.getSiape());
+				service.salvar(novo);
+			} else {
+				Professor novo = new Professor();
+				novo.setNome(obj.getNome());
+				novo.setCpf(obj.getCpf());
+				novo.setData_nascimento(obj.getData_nascimento());
+				novo.setEmail(obj.getEmail());
+				novo.setEndereco(obj.getEndereco());
+				novo.setLogin(obj.getLogin());
+				novo.setSenha(obj.getSenha());
+				novo.setSexo(obj.getSexo());
+				novo.setSiape(obj.getSiape());
+				service.salvar(novo);
+			}	
 			setUsuarios(service.buscarTodos()); 
-			
 			FacesMensagens.info("Registro salvo com sucesso.");
 			limpar();
 		}

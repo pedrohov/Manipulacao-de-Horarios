@@ -10,6 +10,12 @@
     <h1 class="if-page-title">Cadastro de curso</h1>
 		<h:form  id="frm">
         
+        <!-- Atualizar bean -->
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{curso.preRender}" type="preRenderView" />
+		</f:metadata>
+        
         <!-- MENU -->
         <p:toolbar>
              <p:toolbarGroup  align="left">

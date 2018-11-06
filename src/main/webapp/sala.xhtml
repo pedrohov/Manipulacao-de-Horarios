@@ -9,6 +9,13 @@
     
 	<h1 class="if-page-title">Salas</h1>
 		<h:form  id="frm">
+		
+		<!-- Atualizar bean -->
+		<f:metadata>
+			<f:viewParam name="dummy" />
+			<f:event listener="#{sala.preRender}" type="preRenderView" />
+		</f:metadata>
+		
 		<!-- MENU -->
 		<p:toolbar>
 			<p:toolbarGroup  align="left">

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 
 import modelo.Coordenador;
 import modelo.Curso;
@@ -68,6 +69,11 @@ public class CursoBean implements Serializable {
 		obj = new Curso();
 	}
 
+	public void preRender(ComponentSystemEvent e) {
+		setCursos(service.buscarTodos());
+		setCoordenadores(coordService.buscarTodos());
+	}
+	
 	public Curso getObj() {
 		return obj;
 	}
