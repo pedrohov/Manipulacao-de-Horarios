@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,14 +19,15 @@ public class Sala implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 	private String nome;
-	private String tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoSala tipo;
 	private Integer capacidade;
 	
 	public Sala() {
 		
 	}
 
-	public Sala(Integer codigo, String nome, String tipo, Integer capacidade, List<Horario> horarios) {
+	public Sala(Integer codigo, String nome, TipoSala tipo, Integer capacidade, List<Horario> horarios) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
@@ -48,11 +51,11 @@ public class Sala implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
+	public TipoSala getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoSala tipo) {
 		this.tipo = tipo;
 	}
 

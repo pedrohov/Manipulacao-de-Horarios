@@ -48,19 +48,21 @@
 					<f:validateLength minimum="3" maximum="50"/>
 		        </p:inputText>
 		        
-		        <p:outputLabel value="Tipo:" for="txtTipo" />
-		        <p:inputText value="#{disciplina.obj.tipo}" id="txtTipo" required="true"  >
-					<f:validateLength minimum="3" maximum="50"/>
-		        </p:inputText>
+		        <p:outputLabel for="rdbTipo" value="Tipo:" />
+		        <p:selectOneRadio id="rdbTipo" value="#{disciplina.obj.tipo}">
+		        	<f:selectItems value="#{disciplina.tipos}" var="tipo" itemValue="#{tipo}" itemLabel="#{tipo.descricao}" />
+		        </p:selectOneRadio>
+		        
+		        <p:outputLabel for="rdbTipoSala" value="Tipo de Sala:" />
+		        <p:selectOneRadio id="rdbTipoSala" value="#{disciplina.obj.tipo_sala_requerida}">
+		        	<f:selectItems value="#{disciplina.tipoSalas}" var="tipoSala" itemValue="#{tipoSala}" itemLabel="#{tipoSala.descricao}" />
+		        </p:selectOneRadio>
 		        
 		        <p:outputLabel value="Carga Horária:" for="txtCarga" />
-		        <p:inputText value="#{disciplina.obj.carga_horaria}" id="txtCarga" required="true" />
+		        <p:inputNumber value="#{disciplina.obj.carga_horaria}" id="txtCarga" required="true" />
 		        
 		        <p:outputLabel value="Ano:" for="txtAno" />
-		        <p:inputText value="#{disciplina.obj.ano}" id="txtAno" required="true" />
-		        
-		        <p:outputLabel value="Tipo de Sala:" for="txtTSala" />
-		        <p:inputText value="#{disciplina.obj.tipo_sala_requerida}" id="txtTSala" />
+		        <p:inputText value="#{disciplina.obj.ano}" id="txtAno" />
 		        
 		        <p:outputLabel value="Cursos:" for="smmCursos" />
 		        <p:selectManyMenu id="smmCursos" value="#{disciplina.obj.cursos}" converter="cursoConverter"

@@ -44,9 +44,9 @@
 		        </p:inputText>
 		        
 		        <p:outputLabel value="CPF:" for="txtCPF" />
-		        <p:inputText value="#{usuario.obj.cpf}" id="txtCPF" required="true"  >
+		        <p:inputMask value="#{usuario.obj.cpf}" id="txtCPF" required="true" mask="999.999.999-99" >
 					<f:validateLength minimum="3" maximum="50"/>
-		        </p:inputText>
+		        </p:inputMask>
 		        
 		        <p:outputLabel value="Endereço:" for="txtEndereco" />
 		        <p:inputText value="#{usuario.obj.endereco}" id="txtEndereco" required="true"  >
@@ -61,9 +61,7 @@
                  </p:inputText> 
 		        
 		        <p:outputLabel value="SIAPE:" for="txtSIAPE" />
-		        <p:inputText value="#{usuario.obj.siape}" id="txtSIAPE" required="true"  >
-					<f:validateLength minimum="3" maximum="50"/>
-		        </p:inputText>
+		        <p:inputMask value="#{usuario.obj.siape}" id="txtSIAPE" required="true" mask="99999999" />
 		        
 		        <p:outputLabel value="Data de nascimento" for="dtNascimento" />
 		         <p:calendar id="dtNascimento" required="true"
@@ -73,8 +71,7 @@
 				      
 				<p:outputLabel for="rdbSexo" value="Sexo:" />
 		        <p:selectOneRadio id="rdbSexo" value="#{usuario.obj.sexo}">
-		        	<f:selectItem itemLabel="Masculino" itemValue="MASCULINO" />
-		        	<f:selectItem itemLabel="Feminino" itemValue="FEMININO" />
+		        	<f:selectItems value="#{usuario.sexos}" var="sexo" itemValue="#{sexo}" itemLabel="#{sexo.descricao}"/>
 		        </p:selectOneRadio>
 		        
 		       <p:outputLabel for="rdbPermissao" value="Tipo de Usuário:" />
@@ -93,10 +90,10 @@
 		        <p:password id="inpSenha" required="true" value="#{usuario.obj.senha}"
 				      feedback="true" weakLabel="Fraca" goodLabel="Boa"
 				      strongLabel="Forte" promptLabel=" Informe uma senha"
-	                     inline="true" match=" confirmacaoSenha" />
+	                     inline="true" match="confirmacaoSenha" />
 	               
 		        <p:outputLabel value="Confirme a senha" for="confirmacaoSenha" />
-		        <p:password id="confirmacaoSenha" required="true" />
+		        <p:password id="confirmacaoSenha" value="#{usuario.confirmaSenha}" required="true" />
 		        		       
 			</p:panelGrid>
 		</div>

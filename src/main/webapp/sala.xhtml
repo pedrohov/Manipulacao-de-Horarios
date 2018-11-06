@@ -67,7 +67,7 @@
 
 			<p:confirmDialog header="Exclusão de item"
 				message="Tem certeza que deseja excluir esse registro?"
-widgetVar="confirmacao">
+				widgetVar="confirmacao">
 				<p:commandButton value="Sim" action="#{sala.excluir}"
 					update="frm" process="@this"
 					oncomplete="PF('confirmacao').hide()" />

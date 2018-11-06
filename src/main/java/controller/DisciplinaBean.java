@@ -11,6 +11,8 @@ import modelo.Curso;
 import modelo.Disciplina;
 import modelo.Solicitacao;
 import modelo.SolicitacaoStatus;
+import modelo.TipoDisciplina;
+import modelo.TipoSala;
 import service.CursoService;
 import service.DisciplinaService;
 import service.SolicitacaoService;
@@ -93,6 +95,14 @@ public class DisciplinaBean implements Serializable {
 
 	public Disciplina getObj() {
 		return obj;
+	}
+	
+	public TipoDisciplina[] getTipos() {
+		return TipoDisciplina.values();
+	}
+	
+	public TipoSala[] getTipoSalas() {
+		return TipoSala.values();
 	}
 
 	public void setObj(Disciplina obj) {

@@ -42,13 +42,13 @@
 					<f:validateLength minimum="3" maximum="50"/>
 		        </p:inputText>
 		        
-		        <p:outputLabel value="Tipo:" for="txtTipo" />
-		        <p:inputText value="#{sala.obj.tipo}" id="txtTipo" required="true"  >
-					<f:validateLength minimum="3" maximum="50"/>
-		        </p:inputText>
+		        <p:outputLabel for="rdbTipo" value="Tipo de Sala:" />
+		        <p:selectOneRadio id="rdbTipo" value="#{sala.obj.tipo}">
+		        	<f:selectItems value="#{sala.tipos}" />
+		        </p:selectOneRadio>
 		        
 		        <p:outputLabel value="Capacidade:" for="txtCapacidade" />
-		        <p:inputText value="#{sala.obj.capacidade}" id="txtCapacidade" required="true" />
+		        <p:inputNumber value="#{sala.obj.capacidade}" id="txtCapacidade" required="true" />
 			</p:panelGrid>
 		</div>
 		

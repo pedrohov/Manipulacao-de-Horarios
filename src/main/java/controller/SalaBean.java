@@ -9,6 +9,7 @@ import javax.faces.event.ComponentSystemEvent;
 
 import util.FacesMensagens;
 import modelo.Sala;
+import modelo.TipoSala;
 import service.SalaService;
 
 @ManagedBean(name="sala")
@@ -65,6 +66,10 @@ public class SalaBean implements Serializable {
 	
 	public void preRender(ComponentSystemEvent e) {
 		setSalas(service.buscarTodos());
+	}
+	
+	public TipoSala[] getTipos() {
+		return TipoSala.values();
 	}
 
 	public Sala getObj() {

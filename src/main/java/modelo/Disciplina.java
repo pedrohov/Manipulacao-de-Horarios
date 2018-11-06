@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,9 +25,11 @@ public class Disciplina implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
 	private String nome;
-	private String tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoDisciplina tipo;
 	private Integer carga_horaria;
-	private String tipo_sala_requerida;
+	@Enumerated(EnumType.STRING)
+	private TipoSala tipo_sala_requerida;
 	private Integer ano;
 	
 	@ManyToMany(cascade = { 
@@ -46,7 +50,7 @@ public class Disciplina implements Serializable {
 		turmas = new ArrayList<Turma>();
 	}
 
-	public Disciplina(Integer codigo, String nome, String tipo, Integer carga_horaria, String tipo_sala_requerida,
+	public Disciplina(Integer codigo, String nome, TipoDisciplina tipo, Integer carga_horaria, TipoSala tipo_sala_requerida,
 			Integer ano, List<Curso> cursos, List<Turma> turmas) {
 		super();
 		this.codigo = codigo;
@@ -100,11 +104,11 @@ public class Disciplina implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTipo() {
+	public TipoDisciplina getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoDisciplina tipo) {
 		this.tipo = tipo;
 	}
 
@@ -116,11 +120,11 @@ public class Disciplina implements Serializable {
 		this.carga_horaria = carga_horaria;
 	}
 
-	public String getTipo_sala_requerida() {
+	public TipoSala getTipo_sala_requerida() {
 		return tipo_sala_requerida;
 	}
 
-	public void setTipo_sala_requerida(String tipo_sala_requerida) {
+	public void setTipo_sala_requerida(TipoSala tipo_sala_requerida) {
 		this.tipo_sala_requerida = tipo_sala_requerida;
 	}
 

@@ -39,7 +39,8 @@ public class UsuarioBean implements Serializable {
 	}
 	
 	public void salvar() {
-		try{	
+		try{
+			
 			if(permissao.equals("DE")) {
 				DirecaoEnsino novo = new DirecaoEnsino();
 				novo.setNome(obj.getNome());
